@@ -13,6 +13,7 @@ const addDish = () => {
     name: newDish.value.name,
 
     status: newDish.value.status,
+    
   });
 };
 </script>

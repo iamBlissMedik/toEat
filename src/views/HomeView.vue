@@ -1,27 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import type { Restaurant } from "@/types/restaurant";
 
-import type { Diet } from "@/types/diet";
-
-interface Restaurant {
-  name?: string;
-
-  status?: RecommendedStatus;
-  dishes?: Dish[];
-}
-interface Dish {
-  name: string;
-  diet?: Diet;
-  status?: RecommendedStatus;
-}
-
-const statusList = [
-  "Want to try",
-  "Recommended",
-  "Do not recommend",
-  "Want to try",
-] as const;
-type RecommendedStatus = (typeof statusList)[number];
+import { statusList } from "@/types/constant";
 
 const restaurantList = ref(<Restaurant[]>[]);
 const newRestaurant = ref<Restaurant>({
@@ -39,7 +20,6 @@ const addRestaurant = () => {
 
 <template>
   <main>
-   
     <!-- CREATE A FORM TO ALLOW USERS ADD A RESTAURANT TO THE LIST -->
     <form @submit.prevent="addRestaurant">
       <div>
