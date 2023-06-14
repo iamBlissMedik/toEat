@@ -1,15 +1,32 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import type { RestaurantStatus } from "@/types/restaurantStatus";
+
+import type { Diet } from "@/types/diet";
+
 interface Restaurant {
   name?: string;
 
-  status?: RestaurantStatus;
+  status?: RecommendedStatus;
   dishes?: Dish[];
 }
+interface Dish {
+  name: string;
+  diet?: Diet;
+  status?: RecommendedStatus;
+}
+
+const statusList = [
+  "Want to try",
+  "Recommended",
+  "Do not recommend",
+  "Want to try",
+] as const;
+type RecommendedStatus = (typeof statusList)[number];
 
 const restaurantList = ref(<Restaurant[]>[]);
-const newRestaurant = ref<Restaurant>({});
+const newRestaurant = ref<Restaurant>({
+  status: "Want to try",
+});
 const addRestaurant = () => {
   restaurantList.value.push({
     name: newRestaurant.value.name,
@@ -18,12 +35,6 @@ const addRestaurant = () => {
     dishes: [],
   });
 };
-const statusList: RestaurantStatus[] = [
-  "Want to try",
-  "Recommended",
-  "Do not recommend",
-  "Want to try",
-];
 </script>
 
 <template>

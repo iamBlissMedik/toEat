@@ -1,4 +1,4 @@
-export type RestaurantStatus =
+export type RecommendedStatus =
   | "Want to try"
   | "Recommended"
   | "Do not recommend"
