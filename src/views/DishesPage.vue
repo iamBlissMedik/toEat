@@ -1,24 +1,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-import type { Diet } from "@/types/diet";
-
-interface Dish {
-  name?: string;
-  diet?: Diet;
-  status?: RecommendedStatus;
-}
-
-const statusList = [
-  "Want to try",
-  "Recommended",
-  "Do not recommend",
-  "Want to try",
-] as const;
-type RecommendedStatus = (typeof statusList)[number];
+import type { Dish } from "@/types/dish";
+import { statusList } from "@/types/constant";
 
 const dishList = ref(<Dish[]>[]);
-const newDish = ref<Dish>({});
+const newDish = ref<Dish>({
+  status: "Want to try",
+});
 const addDish = () => {
   dishList.value.push({
     name: newDish.value.name,

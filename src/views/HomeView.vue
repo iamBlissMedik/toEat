@@ -39,7 +39,7 @@ const addRestaurant = () => {
 
 <template>
   <main>
-    {{ restaurantList }}
+   
     <!-- CREATE A FORM TO ALLOW USERS ADD A RESTAURANT TO THE LIST -->
     <form @submit.prevent="addRestaurant">
       <div>
